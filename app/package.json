@@ -1,0 +1,18 @@
+{
+    "name": "mongodb-nodejs-client",
+    "version": "1.0.0",
+    "description": "A MongoDB client with Node.js",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+      "start": "node app.js",
+      "watch": "node --watch app.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Alexandre Leroux (alex@sherpa.one)",
+    "license": "ISC",
+    "dependencies": {
+      "mongodb": "6.3.0",
+      "mongoose": "8.1.2"
+    }
+  }

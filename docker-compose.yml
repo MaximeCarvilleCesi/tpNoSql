@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    container_name: mongo_express
+    image: mongo-express
+    ports:
+      - 8081:8081
+    env_file: ./mongo_db/.env
+    networks:
+      - mdb
+
+  app:
+    image: node:alpine
+    command: sh -c "npm i && npm run watch"
+    working_dir: /usr/src/app
+    volumes:
+      - ./app:/usr/src/app
+    ports:
+      - 3333:3000
+    env_file: ./app/.env
+    networks:
+      - mdb
+
+networks:
+  mdb:
+    driver: bridge
